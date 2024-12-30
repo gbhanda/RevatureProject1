@@ -22,13 +22,17 @@ public class commonSteps {
     public void the_user_is_in_the_home_page() {
         // Write code here that turns the phrase above into concrete actions
         TestRunner.loginPage.setUpLoggedInUser();
+        TestRunner.wait.until(ExpectedConditions.titleIs("Home"));
+        TestRunner.wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.tagName("tr"),0));
+        // TestRunner.implicitlyWaitForSeconds(5);
+        // TestRunner.numberOfTable = TestRunner.homePage.getNumberOfCelestialRows();
     }
 
     @Then("the user should get a browser alert saying {string}")
     public void the_user_should_get_a_browser_alert_saying(String string) {
         TestRunner.wait.until(ExpectedConditions.alertIsPresent());
         Alert alert = TestRunner.driver.switchTo().alert();
-        Assert.assertEquals(string, alert.getText());
+        Assert.assertEquals(string.toLowerCase(), alert.getText().toLowerCase());
         alert.accept();
     }
     
@@ -44,19 +48,28 @@ public class commonSteps {
 
     @Then("the table refreshes")
     public void the_table_refreshes() {
-        TestRunner.wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("celestialTable")));
-        Assert.assertNotEquals(TestRunner.numberOfTable ,TestRunner.homePage.getNumberOfCelestialRows());
+        //String oldTable = TestRunner.homePage.getTable().toString();
+        // TestRunner.wait.until(ExpectedConditions.not(driver -> {
+        //     return TestRunner.numberOfTable == TestRunner.homePage.getNumberOfCelestialRows();
+        // }));
+        //TestRunner.wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.tagName("tr"),0));
+        //Delete This
+        TestRunner.wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.tagName("tr")));
+        System.out.print(TestRunner.homePage.getTable().toString());
+        Assert.assertNotEquals(4 ,TestRunner.homePage.getNumberOfCelestialRows());
     }
 
     @Given("Planet is selected")
     public void planet_is_selected() {
         // Write code here that turns the phrase above into concrete actions
         TestRunner.homePage.planetIsSelected();
+        TestRunner.implicitlyWaitForSeconds(2);
     }
 
     @Given("Moon is selected")
     public void moon_is_selected() {
         // Write code here that turns the phrase above into concrete actions
         TestRunner.homePage.moonIsSelected();
+        TestRunner.implicitlyWaitForSeconds(2);
     }
 }

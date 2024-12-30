@@ -20,5 +20,6 @@ public class createPlanetCommonSteps {
         public void submits_the_planet_name() {
             TestRunner.numberOfTable = TestRunner.homePage.getNumberOfCelestialRows();
             TestRunner.homePage.clickSubmitButton();
+            TestRunner.implicitlyWaitForSeconds(1);
         }
     }

@@ -1,11 +1,11 @@
 @US2 @SR1 @SR3
 Feature: Secure Access to the account
   As a user I want to securely access my account so I can interact with the Planetarium in a secure environment
-    Background: The user is logged in
+    Background: The user is not logged in
       Given the user is not logged in
 
     @NeedsLogout
-    Scenario: Could accessed the account
+    Scenario: Could access the account
       When the user provides username "Batman"
       And the user provides password "Iamthenight1939"
       And the user submits the login credentials

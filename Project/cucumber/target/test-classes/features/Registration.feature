@@ -8,8 +8,8 @@ Feature: User Registration
         And     the user clicks the register link
 
     Scenario: Users can register a new account with valid credentials
-        When    the user provides username "Batman"
-        And     the user provides password "Iamthenight1939"
+        When    the user provides username "Super_man-2002"
+        And     the user provides password "Krypton-was_2000"
         And     the user submits the credentials
         Then    the user should get a browser alert saying "Account created successfully"
         And     the user should be redirected to the login page

@@ -25,6 +25,7 @@ public class createMoonCommonSteps {
     @When("Submits the moon name")
     public void submits_the_moon_name() {
         TestRunner.numberOfTable = TestRunner.homePage.getNumberOfCelestialRows();
-        TestRunner.homePage.clickSubmitButton();;
+        TestRunner.homePage.clickSubmitButton();
+        TestRunner.implicitlyWaitForSeconds(1);
     }
 }

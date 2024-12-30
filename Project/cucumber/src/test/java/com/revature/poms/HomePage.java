@@ -6,7 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+
+import com.revature.TestRunner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -93,55 +96,47 @@ public class HomePage {
     }
 
     public int getNumberOfCelestialRows(){
-        return tableRows.size()-1;
+        return getTable().size()-1;
     }
 
     public boolean checkIfaPlanetIsDeleted(String planetName){
-        for (WebElement row : tableRows) {
+        for (WebElement row : getTable()) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (cells.get(0).getText().equals("planet") && cells.get(2).getText().equals(planetName)) { 
-                return false;
+            if(cells.size()>0){
+                if (cells.get(0).getText().equals("planet") && cells.get(2).getText().equals(planetName)) { 
+                    return false;
+                }
             }
+            
         }
         return true;
     }
 
-    public boolean checkIfaPlanetIsOnTheTable(String planetName){
-        for (WebElement row : tableRows) {
-            List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (cells.get(0).getText().equals("planet") && cells.get(2).getText().equals(planetName)) { 
-                return true;
-            }
-        }
-        return false;
-    }
 
-    public boolean checkIfaMoonIsOnTheTable(String moonName){
-        for (WebElement row : tableRows) {
-            List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (cells.get(0).getText().equals("moon") && cells.get(2).getText().equals(moonName)) { 
-                return true;
-            }
-        }
-        return false;
-    }
+
+
 
     public boolean checkIfaPlanetsMoonIsDeleted(String planetId){
-        for (WebElement row : tableRows) {
+        for (WebElement row : getTable()) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (cells.get(0).getText().equals("moon") && cells.get(3).getText().equals(planetId)) { 
-                return false;
+            if(cells.size()>0){
+                if (cells.get(0).getText().equals("moon") && cells.get(3).getText().equals(planetId)) { 
+                    return false;
+                }
             }
+            
         }
         return true;
     }
 
     public boolean checkIfaMoonIsDeleted(String moonName){
-        for (WebElement row : tableRows) {
+        for (WebElement row : getTable()) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
-            if (cells.get(0).getText().equals("moon") && cells.get(2).getText().equals(moonName)) { 
-                return false;
-            }
+            if(cells.size()>0){
+                if (cells.get(0).getText().equals("moon") && cells.get(2).getText().equals(moonName)) { 
+                    return false;
+                }
+            }            
         }
         return true;
     }
@@ -162,5 +157,9 @@ public class HomePage {
     public void planetIsSelected(){
         Select dropdown = new Select(dropdownElement);
         dropdown.selectByValue("planet");
+    }
+
+    public List<WebElement> getTable(){
+        return driver.findElements(By.tagName("tr"));
     }
 }

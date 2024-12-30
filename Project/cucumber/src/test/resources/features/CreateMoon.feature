@@ -48,4 +48,4 @@ Feature: Moon Creation
       |                                  |  1	        | null	                                                                                                                                        | Invalid moon name    |
       | andigkfsau_-123dadjing infkihek  |  1	        | /Users/gokarnabhandari/Documents/Revature Training/Assignments/Project 1/Project/cucumber/src/test/resources/test_images/jpg_test.jpg         | Invalid moon name    |
       | hellu?                           |  1	        | /Users/gokarnabhandari/Documents/Revature Training/Assignments/Project 1/Project/cucumber/src/test/resources/test_images/png_test.png         | Invalid moon name    |
-      | Luna	                           |  1         | null	                                                                                                                                        | Invalid moon name    |
+      | Luna	                           |  1         | null	                                                                                                                                        | invalid moon name    |

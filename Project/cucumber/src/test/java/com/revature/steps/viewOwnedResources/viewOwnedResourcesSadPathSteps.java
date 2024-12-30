@@ -12,7 +12,7 @@ public class viewOwnedResourcesSadPathSteps {
 
     @When("the user tries to directly access the home page")
     public void the_user_tries_to_directly_access_the_home_page() {
-        Assert.assertEquals("Account Creation", TestRunner.driver.getTitle());
+        Assert.assertEquals("Planetarium Login", TestRunner.driver.getTitle());
     }
 
     @Then("the user should be denied access")

@@ -35,14 +35,14 @@ public class LoginPage {
     }
 
     public void clickLoginButton(){
-        loginButton.click();
+        loginButton.submit();
     }
 
     public void setUpLoggedInUser(){
         driver.get("http://localhost:8080/");
         usernameInput.sendKeys("Batman");
         passwordInput.sendKeys("Iamthenight1939");
-        loginButton.submit();
+        clickLoginButton();
     }
 
     public void openLoginPage(){
